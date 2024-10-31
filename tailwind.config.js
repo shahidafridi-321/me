@@ -6,6 +6,9 @@ export default {
 			colors: {
 				redForBody: "#000000",
 			},
+			fontSize: {
+				"big-title": "calc(2vw + 0.8rem)",
+			},
 		},
 	},
 	plugins: [],
