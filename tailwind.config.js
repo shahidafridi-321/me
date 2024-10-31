@@ -16,6 +16,12 @@ export default {
 			fontSize: {
 				"big-title": "calc(2vw + 0.8rem)",
 			},
+
+			width: {
+				"card-sm": "150px",
+				"card-md": "300px",
+				"card-lg": "450px",
+			},
 		},
 	},
 	plugins: [],
