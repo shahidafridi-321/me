@@ -7,9 +7,9 @@ import { charactersList } from "./data";
 export const App = () => {
 	const [bestScore, setBestScore] = useState(0);
 	const [characters, setCharacters] = useState(charactersList);
-	const [picket, setPicked] = useState([]);
+	const [picked, setPicked] = useState([]);
 
-	let score = picket.length;
+	let score = picked.length;
 	/*
 	function shuffleArray() {
 		let newArray = [...characters];
