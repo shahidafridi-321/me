@@ -10,8 +10,8 @@ export const App = () => {
 	const [picked, setPicked] = useState([]);
 
 	let score = picked.length;
-	/*
-	function shuffleArray() {
+
+	function shuffleCharacters() {
 		let newArray = [...characters];
 		for (let index = characters.length - 1; index > 0; index--) {
 			let randomIndex = Math.floor(Math.random() * (index + 1));
@@ -24,15 +24,15 @@ export const App = () => {
 	}
 
 	function handleClick(id) {
-		if (picket.includes(id)) {
+		if (picked.includes(id)) {
 			setPicked([]);
 			bestScore < score ? setBestScore(score) : bestScore;
 		} else {
-			setPicked([...picket, id]);
+			setPicked([...picked, id]);
 		}
-		shuffleArray();
+		shuffleCharacters();
 	}
- */
+
 	return (
 		<>
 			<Header titleText="Memory Card Game" />
