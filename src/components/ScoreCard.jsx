@@ -1,6 +1,6 @@
 import React from "react";
 
-export const ScoreCard = ({score=0,bestScore=1}) => {
+export const ScoreCard = ({ score, bestScore }) => {
 	return (
 		<div className="bg-gray-500 flex flex-col p-4 shadow-red-950 max-w-44 rounded-md">
 			<p className="text-gray-200 text-xl">Score : {score}</p>
