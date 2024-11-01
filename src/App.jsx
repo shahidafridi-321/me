@@ -102,14 +102,14 @@ export const App = () => {
 				{lost ? (
 					<div className="h-screen w-screen flex justify-center items-center">
 						<GameStatus
-							message="You lost!"
+							message="You lost"
 							handlePlayAgain={handlePlayAgain}
 							bestScore={bestScore}
 						/>
 					</div>
 				) : (
 					<>
-						{/* {score !== characters.length ? (
+						{score !== characters.length ? (
 							<>
 								<div className="bg-gray-800 flex justify-end p-2">
 									<ScoreCard score={score} bestScore={bestScore} />
@@ -139,7 +139,7 @@ export const App = () => {
 									bestScore={bestScore}
 								/>
 							</div>
-						)} */}
+						)}
 					</>
 				)}
 			</Main>
