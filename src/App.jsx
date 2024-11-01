@@ -9,6 +9,7 @@ export const App = () => {
 	const [characters, setCharacters] = useState([]);
 	const [picked, setPicked] = useState([]);
 	const [bestScore, setBestScore] = useState(0);
+	const [isLoading, setIsLoading] = useState(true);
 
 	let score = picked.length;
 
@@ -32,8 +33,10 @@ export const App = () => {
 					})
 				);
 				setCharacters(characters);
+				setIsLoading(false);
 			} catch (error) {
 				console.log("Fetching data Error", error);
+				setIsLoading(false);
 			}
 		}
 		fetchData();
@@ -61,6 +64,12 @@ export const App = () => {
 		shuffleCharacters();
 	}
 
+	if (isLoading)
+		return (
+			<div className="w-screen h-screen bg-gray-800 flex justify-center items-center ">
+				<Header titleText="Loading..." />
+			</div>
+		);
 	return (
 		<>
 			<Header titleText="Memory Card Game" />
