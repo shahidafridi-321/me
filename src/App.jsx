@@ -3,6 +3,7 @@ import { Header } from "./components/Header";
 import { Card } from "./components/Card";
 import { ScoreCard } from "./components/ScoreCard";
 import { Main } from "./components/Main";
+import { Footer } from "./components/Footer";
 
 export const App = () => {
 	const [characters, setCharacters] = useState([]);
@@ -36,7 +37,6 @@ export const App = () => {
 			}
 		}
 		fetchData();
-		
 	}, []);
 
 	function shuffleCharacters() {
@@ -85,6 +85,8 @@ export const App = () => {
 					))}
 				</div>
 			</Main>
+
+			<Footer text="A Project Of The Odin Project" />
 		</>
 	);
 };
