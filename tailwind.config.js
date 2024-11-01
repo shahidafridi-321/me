@@ -10,17 +10,8 @@ export default {
 			"2xl": "1536px",
 		},
 		extend: {
-			colors: {
-				redForBody: "#000000",
-			},
 			fontSize: {
 				"big-title": "calc(2vw + 0.8rem)",
-			},
-
-			width: {
-				"card-sm": "150px",
-				"card-md": "300px",
-				"card-lg": "450px",
 			},
 		},
 	},
