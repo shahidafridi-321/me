@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "./components/Header";
 import { Card } from "./components/Card";
 import { ScoreCard } from "./components/ScoreCard";
-import { charactersList } from "./data";
+import { Main } from "./components/Main";
 
 export const App = () => {
-	const [bestScore, setBestScore] = useState(0);
-	const [characters, setCharacters] = useState(charactersList);
+	const [characters, setCharacters] = useState([]);
 	const [picked, setPicked] = useState([]);
+	const [bestScore, setBestScore] = useState(0);
 
 	let score = picked.length;
+
+	useEffect(() => {
+		
+	}, []);
 
 	function shuffleCharacters() {
 		let newArray = [...characters];
@@ -36,24 +40,27 @@ export const App = () => {
 	return (
 		<>
 			<Header titleText="Memory Card Game" />
-			<div className="bg-gray-700 flex justify-end p-2">
-				<ScoreCard score={score} bestScore={bestScore} />
-			</div>
-			<div
-				className="bg-gray-700 grid grid-cols-3 gap-4 p-4 
+			<Main>
+				<div className="bg-gray-700 flex justify-end p-2">
+					<ScoreCard score={score} bestScore={bestScore} />
+				</div>
+
+				<div
+					className="bg-gray-700 grid grid-cols-3 gap-4 p-4 
                     sm:grid-cols-4 
                     md:grid-cols-6"
-			>
-				{characters.map((character) => (
-					<Card
-						key={character.id}
-						image={character.image}
-						title={character.title}
-						handleClick={handleClick}
-						id={character.id}
-					/>
-				))}
-			</div>
+				>
+					{characters.map((character) => (
+						<Card
+							key={character.id}
+							image={character.image}
+							title={character.title}
+							handleClick={handleClick}
+							id={character.id}
+						/>
+					))}
+				</div>
+			</Main>
 		</>
 	);
 };
