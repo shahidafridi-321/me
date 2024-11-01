@@ -1,5 +1,3 @@
-import React from "react";
-
 export const ScoreCard = ({ score, bestScore }) => {
 	return (
 		<div className="bg-gray-500 flex flex-col p-4 shadow-red-950 max-w-44 rounded-md">
