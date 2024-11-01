@@ -65,12 +65,12 @@ export const App = () => {
 		<>
 			<Header titleText="Memory Card Game" />
 			<Main>
-				<div className="bg-gray-700 flex justify-end p-2">
+				<div className="bg-gray-800 flex justify-end p-2">
 					<ScoreCard score={score} bestScore={bestScore} />
 				</div>
 
 				<div
-					className="bg-gray-700 grid grid-cols-3 gap-4 p-4 
+					className="bg-gray-800 grid grid-cols-3 gap-4 p-4 
                     sm:grid-cols-4 
                     md:grid-cols-6"
 				>

@@ -6,7 +6,7 @@ export const Card = ({
 }) => {
 	return (
 		<div
-			className="bg-white flex flex-col items-center shadow-lg rounded-lg p-2"
+			className="bg-gray-700 flex flex-col items-center shadow-lg rounded-lg p-2"
 			onClick={() => {
 				handleClick(id);
 			}}
