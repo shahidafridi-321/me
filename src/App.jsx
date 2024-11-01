@@ -10,6 +10,8 @@ export const App = () => {
 	const [picked, setPicked] = useState([]);
 	const [bestScore, setBestScore] = useState(0);
 	const [isLoading, setIsLoading] = useState(true);
+	const [isError, setError] = useState(false);
+	const [errorMessage, setErrorMessage] = useState("");
 
 	let score = picked.length;
 
@@ -34,9 +36,11 @@ export const App = () => {
 				);
 				setCharacters(characters);
 				setIsLoading(false);
+				setError(false);
 			} catch (error) {
-				console.log("Fetching data Error", error);
 				setIsLoading(false);
+				setError(true);
+				setErrorMessage(`Fetching data Error : ${error}`);
 			}
 		}
 		fetchData();
@@ -68,6 +72,17 @@ export const App = () => {
 		return (
 			<div className="w-screen h-screen bg-gray-800 flex justify-center items-center ">
 				<Header titleText="Loading..." />
+			</div>
+		);
+
+	if (isError)
+		return (
+			<div className="w-screen h-screen bg-gray-800 flex flex-col justify-center items-center ">
+				<Header titleText="Error" />
+				<h2 className="text-white text-center mt-2 text-sm font-medium">
+					Please refresh the page
+				</h2>
+				<p className="text-white">{errorMessage}</p>
 			</div>
 		);
 	return (
