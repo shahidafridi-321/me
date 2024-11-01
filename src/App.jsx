@@ -63,8 +63,8 @@ export const App = () => {
 	function handleClick(id) {
 		if (picked.includes(id)) {
 			setPicked([]);
-			setLost(true);
 			bestScore < score ? setBestScore(score) : bestScore;
+			setLost(true);
 		} else {
 			setPicked([...picked, id]);
 		}
@@ -74,7 +74,9 @@ export const App = () => {
 	function handlePlayAgain() {
 		setPicked([]);
 		setBestScore(0);
-		setLost(false);
+		if (lost) {
+			setLost(false);
+		}
 	}
 
 	if (isLoading)
@@ -112,7 +114,7 @@ export const App = () => {
 						{score !== characters.length ? (
 							<>
 								<div className="bg-gray-800 flex justify-end p-2">
-									<ScoreCard score={score} bestScore={bestScore} />
+									<ScoreCard score={score} />
 								</div>
 
 								<div
@@ -136,7 +138,7 @@ export const App = () => {
 								<GameStatus
 									handlePlayAgain={handlePlayAgain}
 									message="Congratulations You won!"
-									bestScore={bestScore}
+									bestScore="12"
 								/>
 							</div>
 						)}
