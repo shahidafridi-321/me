@@ -30,7 +30,7 @@ export const App = () => {
 						};
 					})
 				);
-				/* setCharacters(characters); */
+				setCharacters(characters);
 			} catch (error) {
 				console.log("Fetching data Error", error);
 			}
