@@ -4,6 +4,7 @@ import { Card } from "./components/Card";
 import { ScoreCard } from "./components/ScoreCard";
 import { Main } from "./components/Main";
 import { Footer } from "./components/Footer";
+import { GameStatus } from "./components/WinnerCard.jsx";
 
 export const App = () => {
 	const [characters, setCharacters] = useState([]);
@@ -12,6 +13,7 @@ export const App = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [isError, setError] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
+	const [lost, setLost] = useState(false);
 
 	let score = picked.length;
 
@@ -61,11 +63,18 @@ export const App = () => {
 	function handleClick(id) {
 		if (picked.includes(id)) {
 			setPicked([]);
+			setLost(true);
 			bestScore < score ? setBestScore(score) : bestScore;
 		} else {
 			setPicked([...picked, id]);
 		}
 		shuffleCharacters();
+	}
+
+	function handlePlayAgain() {
+		setPicked([]);
+		setBestScore(0);
+		setLost(false);
 	}
 
 	if (isLoading)
@@ -88,26 +97,51 @@ export const App = () => {
 	return (
 		<>
 			<Header titleText="Memory Card Game" />
-			<Main>
-				<div className="bg-gray-800 flex justify-end p-2">
-					<ScoreCard score={score} bestScore={bestScore} />
-				</div>
 
-				<div
-					className="bg-gray-800 grid grid-cols-3 gap-4 p-4 
-                    sm:grid-cols-4 
-                    md:grid-cols-6"
-				>
-					{characters.map((character) => (
-						<Card
-							key={character.id}
-							image={character.image}
-							title={character.title}
-							handleClick={handleClick}
-							id={character.id}
+			<Main>
+				{lost ? (
+					<div className="h-screen w-screen flex justify-center items-center">
+						<GameStatus
+							message="You lost!"
+							handlePlayAgain={handlePlayAgain}
+							bestScore={bestScore}
 						/>
-					))}
-				</div>
+					</div>
+				) : (
+					<>
+						{/* {score !== characters.length ? (
+							<>
+								<div className="bg-gray-800 flex justify-end p-2">
+									<ScoreCard score={score} bestScore={bestScore} />
+								</div>
+
+								<div
+									className="bg-gray-800 grid grid-cols-3 gap-4 p-4 
+									sm:grid-cols-4 
+									md:grid-cols-6"
+								>
+									{characters.map((character) => (
+										<Card
+											key={character.id}
+											image={character.image}
+											title={character.title}
+											handleClick={handleClick}
+											id={character.id}
+										/>
+									))}
+								</div>
+							</>
+						) : (
+							<div className="h-screen w-screen flex justify-center items-center">
+								<GameStatus
+									handlePlayAgain={handlePlayAgain}
+									message="Congratulations You won!"
+									bestScore={bestScore}
+								/>
+							</div>
+						)} */}
+					</>
+				)}
 			</Main>
 
 			<Footer text="A Project Of The Odin Project" />
