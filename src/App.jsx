@@ -12,6 +12,30 @@ export const App = () => {
 	let score = picked.length;
 
 	useEffect(() => {
+		async function fetchData() {
+			try {
+				let response = await fetch(
+					"https://pokeapi.co/api/v2/pokemon?limit=12"
+				);
+				let data = await response.json();
+				let results = await data.results;
+				let characters = await Promise.all(
+					results.map(async (result) => {
+						let response = await fetch(result.url);
+						let data = await response.json();
+						return {
+							id: data.id,
+							title: data.name,
+							image: data.sprites.front_default,
+						};
+					})
+				);
+				/* setCharacters(characters); */
+			} catch (error) {
+				console.log("Fetching data Error", error);
+			}
+		}
+		fetchData();
 		
 	}, []);
 
