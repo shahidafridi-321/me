@@ -1,5 +1,3 @@
-import React from "react";
-
 export const Card = ({
 	title = "Name",
 	image = "../../public/pic.png",
